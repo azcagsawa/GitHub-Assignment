@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
+# In[10]:
 
 
 '''Individual Programming Assignment 1
@@ -39,16 +39,16 @@ def savings(gross_pay, tax_rate, expenses):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    tax = int(gross_pay * tax_rate)
+    tax = gross_pay * tax_rate
     after_tax = gross_pay - tax
-    saving = after_tax - expenses
+    saving = int(after_tax - expenses)
     return saving
 
 
-# In[6]:
+# In[11]:
 
 
-savings(100000,.10,50000)
+savings(100000,.15,50000)
 
 
 # In[7]:
