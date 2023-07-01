@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[146]:
+# In[59]:
 
 
 def relationship_status(from_member, to_member, social_graph):
@@ -94,13 +94,13 @@ social_graph = {
 } 
 
 
-# In[147]:
+# In[60]:
 
 
 relationship_status("@chums", "@joaquin", social_graph)
 
 
-# In[102]:
+# In[61]:
 
 
 def tic_tac_toe(board):
@@ -251,14 +251,13 @@ board8 = [
 ]
 
 
-
-# In[103]:
+# In[62]:
 
 
 tic_tac_toe(board7)
 
 
-# In[246]:
+# In[63]:
 
 
 def eta(first_stop, second_stop, route_map):
@@ -293,13 +292,18 @@ def eta(first_stop, second_stop, route_map):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
-    for each in route_map:
-        if first_stop == each[0] and second_stop == each[1]:
-            current_mins = route_map[first_stop,second_stop]
-            return "it will take " + str(current_mins[ "travel_time_mins"]) + " mins to travel from " + first_stop + " to " + second_stop
-        else:
-            continue
-    return "no known travel time"
+    total_travel_time = 0
+    current_stop = first_stop
+    
+    while current_stop != second_stop:
+        for destination_stop in route_map:
+            if destination_stop[0] == current_stop:
+                current_mins = route_map[destination_stop]
+                total_travel_time += current_mins["travel_time_mins"]
+                current_stop = destination_stop[1]
+                break
+
+    return total_travel_time
     
 legs = {
      ("upd","admu"):{
@@ -310,14 +314,23 @@ legs = {
      },
      ("dlsu","upd"):{
          "travel_time_mins":55
-     }
+     },
+    ('a1', 'a2'): {
+        'travel_time_mins': 10
+    },
+    ('a2', 'b1'): {
+        'travel_time_mins': 10230
+    },
+    ('b1', 'a1'): {
+        'travel_time_mins': 1
+    }
 }
 
 
-# In[247]:
+# In[64]:
 
 
-eta("dlsu","upd",legs)
+eta("a1","b1",legs)
 
 
 # In[ ]:
