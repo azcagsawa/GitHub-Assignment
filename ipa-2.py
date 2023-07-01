@@ -110,7 +110,7 @@ def caesar_cipher(message, shift):
 caesar_cipher("QEFP FP TLOHFKD",3)
 
 
-# In[40]:
+# In[50]:
 
 
 def shift_by_letter(letter, letter_shift):
@@ -142,6 +142,9 @@ def shift_by_letter(letter, letter_shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     
+    letter = letter.upper()
+    letter_shift = letter_shift.upper()
+    
     basis = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     blank = " "
     
@@ -156,13 +159,13 @@ def shift_by_letter(letter, letter_shift):
             return basis[equi]
 
 
-# In[41]:
+# In[52]:
 
 
 shift_by_letter("J","Z")
 
 
-# In[42]:
+# In[54]:
 
 
 def vigenere_cipher(message, key):
@@ -204,7 +207,9 @@ def vigenere_cipher(message, key):
     # if space: append a space to final code
     # if letter: equal index in key & message, shift message based on key's index
     
-
+    message = message.upper()
+    key = key.upper()
+    
     code = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     blnk = " "
     secret = ""
@@ -239,13 +244,13 @@ def vigenere_cipher(message, key):
     return secret
 
 
-# In[43]:
+# In[55]:
 
 
 vigenere_cipher("A C", "KEY")
 
 
-# In[44]:
+# In[56]:
 
 
 def scytale_cipher(message, shift):
@@ -328,13 +333,13 @@ def scytale_cipher(message, shift):
     return encrypted_message
 
 
-# In[45]:
+# In[57]:
 
 
 scytale_cipher("ALGORITHMS_ARE_IMPORTANT",8)
 
 
-# In[46]:
+# In[58]:
 
 
 def scytale_decipher(message, shift):
@@ -393,7 +398,7 @@ def scytale_decipher(message, shift):
     return decrypted_message
 
 
-# In[47]:
+# In[59]:
 
 
 scytale_decipher("AOTSRIOALRH_EMRNGIMA_PTT", 8)
