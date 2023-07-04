@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[36]:
+# In[90]:
 
 
 def shift_letter(letter, shift):
@@ -42,24 +42,21 @@ def shift_letter(letter, shift):
     abc = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     space = " "
     
-    if letter in space:
-        print(space)
+    if letter == space:
+        return space
     else:
-        new = abc.index(letter) + shift
-        if new >= len(abc):
-            wrapped = new - len(abc)
-            return abc[wrapped]
-        else: 
-            return abc[new]
+        index = abc.index(letter)
+        new_index = (index + shift) % len(abc)
+        return abc[new_index]
 
 
-# In[37]:
+# In[91]:
 
 
-shift_letter("Y",2)
+shift_letter(" ",2)
 
 
-# In[38]:
+# In[92]:
 
 
 def caesar_cipher(message, shift):
@@ -94,23 +91,19 @@ def caesar_cipher(message, shift):
         if each in boop:
             coded += boop
         else:
-            new = msg.index(each) + shift
-            if new >= len(msg):
-                wrapped = new - len(msg)
-                coded += msg[wrapped]
-            else:
-                coded += msg[new]
+            new = (msg.index(each) + shift) % len(msg)
+            coded += msg[new]
     
     return coded
 
 
-# In[39]:
+# In[93]:
 
 
 caesar_cipher("QEFP FP TLOHFKD",3)
 
 
-# In[50]:
+# In[94]:
 
 
 def shift_by_letter(letter, letter_shift):
@@ -149,7 +142,7 @@ def shift_by_letter(letter, letter_shift):
     blank = " "
     
     if letter in blank: 
-        return space
+        return blank
     else:
         equi = basis.index(letter) + basis.index(letter_shift)
         if equi >= len(basis):
@@ -159,13 +152,13 @@ def shift_by_letter(letter, letter_shift):
             return basis[equi]
 
 
-# In[52]:
+# In[95]:
 
 
-shift_by_letter("J","Z")
+shift_by_letter(" ","Z")
 
 
-# In[54]:
+# In[96]:
 
 
 def vigenere_cipher(message, key):
@@ -244,13 +237,13 @@ def vigenere_cipher(message, key):
     return secret
 
 
-# In[55]:
+# In[97]:
 
 
 vigenere_cipher("A C", "KEY")
 
 
-# In[56]:
+# In[98]:
 
 
 def scytale_cipher(message, shift):
@@ -314,15 +307,11 @@ def scytale_cipher(message, shift):
     # 1. check if len(message) is a multiple of the shift 
     
     while len(new_message) % shift != 0:
-        message_holder = [message]
-        for each_letter in message:
-            if len(new_message) % shift != 0:
-                message_holder.append("_")
-                new_message = "".join(message_holder)    
-            else:
-                break
+        message_holder.append("_")
+        new_message = "".join(message_holder)
                 
-    new_message = "".join(message_holder)            
+    new_message = "".join(message_holder)  
+    ref = list(new_message)
     
     for each_index in range(len(message)):
         each = message[each_index]
@@ -333,13 +322,13 @@ def scytale_cipher(message, shift):
     return encrypted_message
 
 
-# In[57]:
+# In[99]:
 
 
-scytale_cipher("ALGORITHMS_ARE_IMPORTANT",8)
+scytale_cipher('INFORMATION_AGE', 4)
 
 
-# In[58]:
+# In[100]:
 
 
 def scytale_decipher(message, shift):
@@ -398,10 +387,10 @@ def scytale_decipher(message, shift):
     return decrypted_message
 
 
-# In[59]:
+# In[101]:
 
 
-scytale_decipher("AOTSRIOALRH_EMRNGIMA_PTT", 8)
+scytale_decipher("IRIANMOGFANEOT_", 4)
 
 
 # In[ ]:
