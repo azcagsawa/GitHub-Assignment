@@ -243,7 +243,7 @@ def vigenere_cipher(message, key):
 vigenere_cipher("A C", "KEY")
 
 
-# In[98]:
+# In[47]:
 
 
 def scytale_cipher(message, shift):
@@ -306,7 +306,7 @@ def scytale_cipher(message, shift):
     
     # 1. check if len(message) is a multiple of the shift 
     
-    while len(new_message) % shift != 0:
+    while len(new_message) <= len(message):
         message_holder.append("_")
         new_message = "".join(message_holder)
                 
@@ -322,13 +322,13 @@ def scytale_cipher(message, shift):
     return encrypted_message
 
 
-# In[99]:
+# In[48]:
 
 
-scytale_cipher('INFORMATION_AGE', 4)
+scytale_cipher('WE_ARE_NOW_ENTERING_THE_STRATOSPHERE_________', 15)
 
 
-# In[100]:
+# In[46]:
 
 
 def scytale_decipher(message, shift):
@@ -387,16 +387,22 @@ def scytale_decipher(message, shift):
     return decrypted_message
 
 
-# In[101]:
+# In[30]:
 
 
-scytale_decipher("IRIANMOGFANEOT_", 4)
+scytale_decipher("WA_WNRGHSASE___ERN_TI_ETTPR____EOEENT_ROHE___", 15)
 
 
-# In[ ]:
+# In[10]:
 
 
+print(len("WA_WNRGHSASE___ERN_TI_ETTPR____EOEENT_ROHE___"))
 
+
+# In[31]:
+
+
+print(len("WE_ARE_NOW_ENTERING_THE_STRATOSPHERE_________"))
 
 
 # In[ ]:
