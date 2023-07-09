@@ -243,7 +243,7 @@ def vigenere_cipher(message, key):
 vigenere_cipher("A C", "KEY")
 
 
-# In[47]:
+# In[50]:
 
 
 def scytale_cipher(message, shift):
@@ -305,16 +305,16 @@ def scytale_cipher(message, shift):
     encrypted_message = ""
     
     # 1. check if len(message) is a multiple of the shift 
-    
-    while len(new_message) <= len(message):
+   
+    while len(new_message) % shift != 0:
         message_holder.append("_")
         new_message = "".join(message_holder)
                 
     new_message = "".join(message_holder)  
     ref = list(new_message)
     
-    for each_index in range(len(message)):
-        each = message[each_index]
+    for each_index in range(len(new_message)):
+        each = new_message[each_index]
         trial = (each_index // shift) + len(new_message) // shift * (each_index % shift)
         found_letter = ref[trial]
         encrypted_message += found_letter
@@ -322,13 +322,13 @@ def scytale_cipher(message, shift):
     return encrypted_message
 
 
-# In[48]:
+# In[51]:
 
 
-scytale_cipher('WE_ARE_NOW_ENTERING_THE_STRATOSPHERE_________', 15)
+scytale_cipher('WE_ARE_NOW_ENTERING_THE_STRATOSPHERE', 15)
 
 
-# In[46]:
+# In[52]:
 
 
 def scytale_decipher(message, shift):
@@ -387,22 +387,22 @@ def scytale_decipher(message, shift):
     return decrypted_message
 
 
-# In[30]:
+# In[53]:
 
 
 scytale_decipher("WA_WNRGHSASE___ERN_TI_ETTPR____EOEENT_ROHE___", 15)
 
 
-# In[10]:
+# In[5]:
+
+
+print(len("BT_LCOOCTSSNEI_"))
+
+
+# In[45]:
 
 
 print(len("WA_WNRGHSASE___ERN_TI_ETTPR____EOEENT_ROHE___"))
-
-
-# In[31]:
-
-
-print(len("WE_ARE_NOW_ENTERING_THE_STRATOSPHERE_________"))
 
 
 # In[ ]:
